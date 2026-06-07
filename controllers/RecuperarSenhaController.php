@@ -1,6 +1,6 @@
 <?php
-require_once 'config.php';
-require_once 'UserModel.php';
+require_once '../config.php';
+require_once '../models/UserModel.php';
 
 $userModel = new UserModel($pdo);
 
@@ -12,9 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nova_senha = $_POST['nova_senha'];
 
     if ($userModel->atualizarSenha($cpf, $data_nasc, $nova_senha)) {
-        echo "Senha atualizada com sucesso! <a href='login.php'>Faça login</a>";
+        echo "Senha atualizada com sucesso! <a href='../views/login.php'>Faça login</a>";
     } else {
-        echo "Dados incorretos. CPF ou Data de Nascimento não conferem.";
+        echo "Dados incorretos. CPF ou Data de Nascimento não conferem. <a href='../views/recuperar_senha.php'>Voltar</a>";
     }
 }
 ?>
